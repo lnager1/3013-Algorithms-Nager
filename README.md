@@ -10,4 +10,4 @@
 
 #### Avatar:
 
-<img src="./Pictures/image.png" width="300">
+<img src="./Pictures/image (8).png" width="300">
