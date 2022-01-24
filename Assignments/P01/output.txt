@@ -1,0 +1,11 @@
+######################################################################
+	Assignment 4 - Resizing the Stack
+	CMPS 3013
+	Lindsey Nager
+
+
+	Max Stack Size: 640
+	End Stack Size:: 640
+	Stack Resized: 240 times
+
+######################################################################
