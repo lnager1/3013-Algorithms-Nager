@@ -1,11 +1,20 @@
 ######################################################################
+
 	Assignment 4 - Resizing the Stack
 	CMPS 3013
 	Lindsey Nager
 
 
+	Config Params:
+		Full Threshold: 0.85
+		Shrink Threshold: 0.15
+		Grow Ratio: 2
+		Shrink Ratio: 0.5
+
+	Processed 100000 commands.
+
 	Max Stack Size: 640
 	End Stack Size:: 640
-	Stack Resized: 240 times
+	Stack Resized: 300 times
 
 ######################################################################

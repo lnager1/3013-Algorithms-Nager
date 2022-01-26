@@ -263,13 +263,21 @@ class ArrayStack
          * Returns:
          *      NULL
          */
-        void Print(std::ofstream& outfile)
+        void Print(std::ofstream& outfile, int count)
         {
-            std::cout << "######################################################################\n";
+            std::cout << "######################################################################\n\n";
             
             std::cout << "\tAssignment 4 - Resizing the Stack\n";
             std::cout << "\tCMPS 3013\n";
             std::cout << "\tLindsey Nager\n\n\n";
+
+            std::cout << "\tConfig Params:\n";
+                std::cout << "\t\tFull Threshold: " << growThresh << "\n";
+                std::cout << "\t\tShrink Threshold: " << shrinkThresh << "\n";
+                std::cout << "\t\tGrow Ratio: " << enlargeThresh << "\n";
+                std::cout << "\t\tShrink Ratio: " << reduceThresh << "\n\n";
+            
+            std::cout << "\tProcessed " << count << " commands.\n\n";
 
             std::cout << "\tMax Stack Size: " << maxSize << "\n";
             std::cout << "\tEnd Stack Size:: " << size << "\n";
@@ -277,11 +285,19 @@ class ArrayStack
 
             std::cout << "######################################################################\n";
 
-            outfile << "######################################################################\n";
+            outfile << "######################################################################\n\n";
             
             outfile << "\tAssignment 4 - Resizing the Stack\n";
             outfile << "\tCMPS 3013\n";
             outfile << "\tLindsey Nager\n\n\n";
+
+             outfile << "\tConfig Params:\n";
+                outfile << "\t\tFull Threshold: " << growThresh << "\n";
+                outfile << "\t\tShrink Threshold: " << shrinkThresh << "\n";
+                outfile << "\t\tGrow Ratio: " << enlargeThresh << "\n";
+                outfile << "\t\tShrink Ratio: " << reduceThresh << "\n\n";
+            
+            outfile << "\tProcessed " << count << " commands.\n\n";
 
             outfile << "\tMax Stack Size: " << maxSize << "\n";
             outfile << "\tEnd Stack Size:: " << size << "\n";
@@ -328,7 +344,7 @@ class ArrayStack
             int newSize = size*enlargeThresh;   // double size of original
             int *B = new int[newSize];          // allocate new memory
 
-            for(int i=0;i<size;i++)             // copy values to new array
+            for(int i=0;i < top;i++)             // copy values to new array
             {    
                 B[i] = A[i];
             }
@@ -363,7 +379,7 @@ class ArrayStack
             
             int *B = new int[newSize];            // allocate new memory
 
-            for(int i=0; i< newSize; i++)         // copy values to new array
+            for(int i=0; i < top; i++)         // copy values to new array
             {    
                 B[i] = A[i];
             }
@@ -382,26 +398,33 @@ class ArrayStack
 
 // MAIN DRIVER
 // Simple Array Based Stack Usage:
-int main() 
+int main(int argc, char **argv) 
 {
     // Creates stream variables
     std::ifstream infile;
     std::ofstream outfile;
 
-    infile.open("data.txt");
-    outfile.open("output.txt");
-
     // variables
     int useNum;
+    int count=0;
+
+    std::string inputFileName = argv[1];
+
+    infile.open(inputFileName);
+    outfile.open("output.txt");
 
     // Stack Object
-    ArrayStack stack;
+    ArrayStack stack(std::stod(argv[2]), std::stod(argv[3]), std::stod(argv[4]), std::stod(argv[5]));
 
     // While loop that pushes or pops
-    while(infile >> useNum) useNum%2 == 0? stack.Push(useNum) : stack.Pop();
+    while(infile >> useNum)
+    {
+        useNum%2 == 0? stack.Push(useNum) : stack.Pop();
+        count++;
+    } 
     
     // Print
-    stack.Print(outfile);
+    stack.Print(outfile, count);
 
     // Closes program
     infile.close();
