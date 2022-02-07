@@ -253,22 +253,22 @@ int main()
     T.End(); // end the current timer
 
     // print out how long it took to load the animals file
-    // cout << T.Seconds() << " seconds to read in and print json" << endl;
-    // cout << T.MilliSeconds() << " milli to read in and print json" << endl;
+    cout << T.Seconds() << " seconds to read in and print json" << endl;
+    cout << T.MilliSeconds() << " milli to read in and print json" << endl;
 
     // Instructions
     cout << "Type capital Z to quit.\n\n" ;
     
     // Starts new timer
     Timer matchTimer;
-    matchTimer.Start();
 
     // While capital Z is not typed keep looping
     while((k = getch()) != 'Z') 
     {
+        matchTimer.Start();
         // Tests for a backspace and if pressed deletes
         // last letter from "word".
-        if ((int)k == 127) 
+        if ((int)k == 8) 
         {
             if (word.size() > 0) 
             {
@@ -297,27 +297,32 @@ int main()
         // Find any animals in the array that partially match
         // our substr word
         matches = FindMatches(words, word);
-    }
 
-    // Ends Timer
-    matchTimer.End();
+        // Ends Timer
+        matchTimer.End();
+        
+        for (int i = 0; i < 100; i++) 
+        {
+            std::cout << "\n";
+        }
 
-    // Outputs cute
-    std::cout << "String submitted: " << termcolor::red << word << termcolor::reset << "\n\n";
-    std::cout << termcolor::blue << matches.size() << " words found in " << std::setprecision(2) << matchTimer.Seconds() << " seconds.\n";
+        // Outputs cute
+        std::cout << "String submitted: " << termcolor::red << word << termcolor::reset << "\n\n";
+        std::cout << termcolor::blue << matches.size() << " words found in " << std::setprecision(2) << matchTimer.Seconds() << " seconds.\n";
 
-    std::cout << termcolor::bright_magenta;
-    std::cout << "Matches Found: ";
+        std::cout << termcolor::bright_magenta;
+        std::cout << "Matches Found: ";
 
-    int loopSize;
-    matches.size() < 10 ? loopSize = matches.size() : loopSize = 10;
+        int loopSize;
+        matches.size() < 10 ? loopSize = matches.size() : loopSize = 10;
 
-    // This prints out all found matches
-    for (int i = 0; i < loopSize; i++) 
-    {
-        std::cout << matches[i] << " ";
-    }
-    std::cout << termcolor::reset << endl << endl;    
+        // This prints out all found matches
+        for (int i = 0; i < loopSize; i++) 
+        {
+            std::cout << matches[i] << " ";
+        }
+        std::cout << termcolor::reset << endl << endl;
+    }    
             
     return 0;
 }
