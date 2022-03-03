@@ -307,8 +307,8 @@ int main()
         }
 
         // Outputs cute
-        std::cout << "String submitted: " << termcolor::red << word << termcolor::reset << "\n\n";
-        std::cout << termcolor::blue << matches.size() << " words found in " << std::setprecision(2) << matchTimer.Seconds() << " seconds.\n";
+        std::cout << "String submitted: " << termcolor::bright_red << word << termcolor::reset << "\n\n";
+        std::cout << termcolor::bright_cyan << matches.size() << " words found in " << std::setprecision(2) << matchTimer.Seconds() << " seconds.\n";
 
         std::cout << termcolor::bright_magenta;
         std::cout << "Matches Found: ";
