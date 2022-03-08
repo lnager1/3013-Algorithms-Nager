@@ -1,8 +1,8 @@
-## P02 - Linear Getch
+## P03 - Trie Search
 ### Lindsey Nager
 ### Description:
 
-This program implements a linear search over a dictonary and returns all values found
+This program implements a trie search over a dictonary and returns all values found
 
 ### Files
 
